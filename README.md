@@ -4,6 +4,12 @@
 * auto-gen TOC:
 {:toc}
 
+##Android
+https://github.com/kseta233/nowdb-client-sample-android
+
+##iOS
+https://github.com/kseta233/nowdb-client-sample-iOS
+
 ##Pengantar
 Halo developers,
 Banyak penyedia layanan untuk membuat backend aplikasi mobile. Beberapa yang terkenal:
@@ -507,164 +513,9 @@ public void postData(String id){
 
 seluruh Source Code yang ada di tutorial ini, dapat diakses di :
 
-
-## [iOS](http://developer.iOS.com/training/index.html)
-
-Secara Konseptual peranan nowdb dan mobile apps di iOS sbb:
-```sequence
-UI->Networking Lib: event
-Networking Lib->nowdb: http call
-nowdb->nowdb: validate data
-nowdb->Networking Lib: http response
-Networking Lib->UI: display data
-```
-untuk iOS, tutorial akan menggunakan Alamofire untuk networking libnya dan bahasa swift 2.0
-
-Untuk tutorial mengkonsumsi API nowdb pada iOS, kita akan menggunakan base project sederhana yang sudah dibuat sbb:
-
-**Package**:
-[![projectBaseiOS.png](https://s22.postimg.org/dwi09psq9/project_Base_iOS.png)](https://postimg.org/image/a04odq7ql/)
-
-- **constant**, untuk menampung data setting constant string untuk RestAPI
-- **model**, untuk menampung hasil balikan dari response API
-- **service**, untuk membuat APIInterface Alamofire
-- **util**, untuk membuat fungsi2 statis
-- **view**, untuk menampung class Activity/Fragment yang digunakan dan bertanggung jawab atas interaksi dengan pengguna
-
-**Gradle**
-
-[![gradleiOS.png](https://s18.postimg.org/9r7f8j02x/gradle_iOS.png)](https://postimg.org/image/rh93tkdnp/)
-
-Karena NowDB Pure merupakan API provider, maka kita tinggal mengkonsumsinya menggunakan Alamofire
-
-### [Alamofire](#)
-
-Alamofire adalah Rest Client untuk iOS dan swift dari squareup. Pada tutorial ini kita akan membuat aplikasi iOS untuk menjelaskan penggunaan HTTP GET REQUEST menggunakan library Alamofire. ([source](http://teknorial.com/tutorial-parsing-data-json-dengan-Alamofire/))
-
-Tutorial ini tidak akan membahas banyak soal Alamofire. Alamofire yang digunakan adalah Alamofire 3
+https://github.com/kseta233/nowdb-client-sample-android
 
 
-### Mengkonsumsi API Now DB di iOS
-pada sesi ini, akan dijelaskan step by step dari
-
-
-1. [melakukan setup NowDB](#setup-nowdb)
-2. [menambahkan data (Create)](#create-versi-iOS)
-3. [mengupdate data (Update)](#update-versi-iOS)
-4. [membaca data (Read)](#read-versi-iOS)
-5. [menghapus data (Delete)](#delete-versi-iOS)
-
-
-#### Setup NowDB [<i class="icon-right"></i> ](#mengkonsumsi-api-now-db-di-iOS)
-
-Silahkan lihat kembali disini [<i class="icon-right">Panduan Setup Now DB</i> ](#setup-nowdb)
-
-
-#### **Mempersiapkan Koding iOS**
-
-**CONSTANT**
-Class ini hanya digunakan sebagai constant untuk merangkai base API dan menyimpan App ID serta Token yang sudah digenerate dari nowdb
-```swift
-
-```
-**MODEL**
-model response yang harus disiapkan menggunakan http://www.jsonschema2pojo.org/ setelah mendapatkan testing response dengan cara testing seperti di doc.nowdb.net, kita kemudian akan membuat class model dari JSONSchema POJO,
-
-penampakannya kira-kira sbb:
-``` swift
-
-```
-**SERVICE**
-Pada package service buatlah interface untuk http Alamofire
-```swift
-
-```
-> Note : Apabila ingin melakukan costumisasi, bisa dilakukan di override callbacknya Namun tidak akan dibahas pada tutorial ini.
-
-**VIEW**
-Pada package view, di class yang terdapat Activity, lakukan inisialisasi Alamofire, dengan membuat method
-
-``` swift
-
-```
-
-> Note: cara inisialisasi bisa memakai design pattern lain, untuk tutorial ini, dibuat sesimple mungkin untuk melakukan simulasi cara memakai nowdb
-
-
-#### **Create versi iOS**[<i class="icon-right"></i> ](#mengkonsumsi-api-now-db-di-iOS)
-
-siapkan interface berikut di file NowDBAPIInterface
-``` swift
-
-```
-> Note : Karena nowdb menggunakan request body yang dibaca, maka semua disatukan ke request body, tidak di header
-
-Kemudian di implementasi UI, panggil method ini dengan data yang sudah ada
-``` swift
-
-```
-
-#### **Update versi iOS**[<i class="icon-right"></i> ](#mengkonsumsi-api-now-db-di-iOS)
-
-untuk update nowDB menggunakan method put.
-Seperti Create, kita akan membuat interface dan implementasi di view
-``` swift
-
-```
-
-Kemudian di implementasi UI, panggil method ini dengan data yang sudah ada
-``` swift
-
-```
-
-
-#### **Read versi iOS**[<i class="icon-right"></i> ](#mengkonsumsi-api-now-db-di-iOS)
-
-untuk read, akan dibagi menjadi 2, read 1 object dan read banyak object.
-Saat mengambil read object dan list object, hendaknya kita berhati-hati sedikit. Karena kembalian dari nowdb selalu array, meskipun objectnya hanya 1
-
-##### **Read One**
-
-Untuk read 1 object, kita harus siapkan penampung hasil list karena sifat nowdb
-``` swift
-
-```
-> Note : Karena nowdb menggunakan request body yang dibaca, maka semua disatukan ke request body, tidak di header
-
-Kemudian di implementasi UI, panggil method ini dengan data yang sudah ada
-``` swift
-
-```
-
-##### **Read All**
-
-siapkan interface berikut di file NowDBAPIInterface
-``` swift
-
-```
-> Note : Karena nowdb menggunakan request body yang dibaca, maka semua disatukan ke request body, tidak di header
-
-Kemudian di implementasi UI, panggil method ini dengan data yang sudah ada
-``` swift
-
-```
-
-#### **Delete versi iOS**[<i class="icon-right"></i> ](#mengkonsumsi-api-now-db-di-iOS)
-
-siapkan interface berikut di file NowDBAPIInterface
-``` swift
-
-```
-> Note : Karena nowdb menggunakan request body yang dibaca, maka semua disatukan ke request body, tidak di header
-
-Kemudian di implementasi UI, panggil method ini dengan data yang sudah ada
-``` swift
-
-```
-
-### **Source Code**
-
-seluruh Source Code yang ada di tutorial ini, dapat diakses di :
 
 
 ##Kesimpulan
