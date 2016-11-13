@@ -1,6 +1,8 @@
 #Now DB - Mobile API Tutorial
 ##Daftar Isi
 [TOC]
+* auto-gen TOC:
+{:toc}
 
 ##Pengantar
 Halo developers,
